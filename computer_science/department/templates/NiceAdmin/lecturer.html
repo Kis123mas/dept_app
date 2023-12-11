@@ -1,0 +1,71 @@
+{% extends 'NiceAdmin/base.html' %}
+{% load static %}
+{% block content %}
+
+<main id="main" class="main">
+
+    <!-- News & Updates Traffic -->
+    <style>
+        .post-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 50%; /* Optional: Round the image corners */
+        }
+
+        .text-container {
+            flex: 1;
+        }
+
+        .card-title {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem !important;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem !important;
+        }
+    </style>
+
+    <div class="card">
+
+        <div class="card-body pb-0">
+            <h5 class="card-title mb-4">Lecturers In The Department<span></span></h5>
+
+            <div class="news">
+
+                {% for b in lect %}
+                <div class="post-item mb-4">
+                    <img src="{{ b.picture.url }}" alt="" class="profile-image">
+                    <div class="text-container">
+                        <p class="mb-2"><strong>NAME:</strong> {{ b.name }}</p>
+                        <p class="mb-1"><strong>QUALIFICATION:</strong> {{ b.qualification }}</p>
+                        <p class="mb-1"><strong>RANK:</strong> {{ b.rank }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No Lecturer data added yet!</p>
+                {% endfor %}
+
+            </div><!-- End sidebar recent posts-->
+
+        </div>
+    </div>
+
+</main><!-- End #main -->
+{% endblock %}

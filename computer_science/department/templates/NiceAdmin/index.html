@@ -1,0 +1,158 @@
+{% extends 'NiceAdmin/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section dashboard">
+    <div class="row">
+
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+        <div class="row">
+
+
+
+          <div class="col-12">
+            <div class="card top-selling overflow-auto">
+
+              <div class="card-body pb-0">
+                <h5 class="card-title">Download Lecture Note Here.<span></span></h5>
+
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">COURSE CORDINATOR</th>
+                      <th scope="col">COURSE TITLE</th>
+                      <th scope="col">Course CODE</th>
+                      <th scope="col">ASSOCIATED LECTURERS</th>
+                      <th scope="col">CREDIT LOAD</th>
+                      <th scope="col">DOWNLOAD</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pdf in user_pdfs %}
+                    <tr>
+                      <td>{{ pdf.name }}</td>
+                      <td><a href="#" class="text-primary fw-bold">{{ pdf.course_title }}</a></td>
+                      <td>{{ pdf.course_code }}</td>
+                      <td>{{ pdf.associated_lectutrers }}</td>
+                      <td>{{ pdf.credit_load }}</td>
+                      <td><a href="{{ pdf.pdf_file.url }}">Download</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+              </div>
+
+            </div>
+          </div><!-- End Top Selling -->
+
+          <!-- Top Selling -->
+          <div class="col-12">
+            <div class="card top-selling overflow-auto">
+
+              <div class="card-body pb-0">
+                <h5 class="card-title">Download Seminar Material and View Video.<span></span></h5>
+
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">LECTURER</th>
+                      <th scope="col">TITLE</th>
+                      <th scope="col">PRICE</th>
+                      <th scope="col">MATERIAL</th>
+                      <th scope="col">LINK</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for seminar in user_seminars %}
+                    <tr>
+                      <td class="fw-bold">{{ seminar.lecturer.username }}</td>
+                      <td><a href="{{ seminar.link }}" class="text-primary fw-bold">{{ seminar.title }}</a></td>
+                      <td>Free</td>
+                      <td class="fw-bold"><a href="{{ seminar.pdf_file.url }}" target="_blank">Download</a></td>
+                      <td><a href="{{ seminar.link }}" target="_blank">Watch</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+              </div>
+
+            </div>
+          </div><!-- End Top Selling -->
+
+        </div>
+      </div><!-- End Left side columns -->
+
+      <!-- Right side columns -->
+      <div class="col-lg-4">
+
+        <!-- Recent Activity -->
+        <div class="card">
+
+          <div class="card-body">
+            <h5 class="card-title">Departmental News and Updates<span></span></h5>
+
+            <div class="activity">
+              {% for not in notification %}
+
+              <div class="activity-item d-flex">
+                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                <div class="activity-content">{{ not.message }}
+                </div>
+              </div><!-- End activity item-->
+              {% empty %}
+              <p>No info yet.</p>
+              {% endfor %}
+
+            </div>
+
+          </div>
+        </div><!-- End Recent Activity -->
+
+        <!-- News & Updates Traffic -->
+        <div class="card">
+
+          <div class="card-body pb-0">
+            <h5 class="card-title">Best Performing Student in Each Course.<span></span></h5>
+
+            <div class="news">
+
+              {% for b in best %}
+
+
+              <div class="post-item clearfix">
+                <img src="{{ b.picture.url }}" alt="">
+                <h4><a href="#">Name : {{ b.name }}</a></h4>
+                <h4><a href="#">Course : {{ b.course }}</a></h4>
+                <h4><a href="#">Grade : {{ b.grade }}</a></h4>
+              </div>
+              {% endfor %}
+
+            </div><!-- End sidebar recent posts-->
+
+          </div>
+        </div><!-- End News & Updates -->
+
+      </div><!-- End Right side columns -->
+      <br>
+
+    </div>
+  </section>
+
+</main><!-- End #main -->
+{% endblock %}

@@ -1,0 +1,19 @@
+<!-- templates/admin/login.html -->
+{% extends 'NiceAdmin/base.html' %}
+
+{% block extrastyle %}
+<style>
+    body {
+        background-image: url('{{ jazzmin.login_bg_image }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh; /* Adjust the height as needed */
+    }
+
+    .login {
+        background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background for better visibility */
+        border-radius: 10px; /* Optional: Add border-radius for a rounded appearance */
+    }
+</style>
+{% endblock %}

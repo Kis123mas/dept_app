@@ -1,0 +1,19 @@
+{% extends 'department/base.html' %}
+{% load static %}
+
+{% block content %}
+  <main id="main" class="main">
+    <div class="container">
+      <section class="section welcome-section">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h1 class="mb-4">Welcome To The Department Of Computer Science</h1>
+            <p class="lead">We are excited to have you here. Explore and engage with the resources available.</p>
+            <a href="{% url 'login' %}" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </section>
+      <br><br>
+    </div>
+  </main>
+{% endblock %}
