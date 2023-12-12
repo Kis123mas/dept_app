@@ -39,7 +39,8 @@
   ======================================================== -->
   <style>
     body {
-      background-image: url("{% static 'images/background.jpg' %}"); /* Replace 'background.jpg' with your actual image file */
+      background-image: url("{% static 'images/background.jpg' %}");
+      /* Replace 'background.jpg' with your actual image file */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -119,6 +120,13 @@
         </div>
 
       </section>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
 
     </div>
   </main><!-- End #main -->
