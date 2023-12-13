@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from your_app.admin import custom_admin_site  # Import the custom admin site
 
 urlpatterns = [
+    path('customadmin/', custom_admin_site.urls),  # Use the custom admin site
     path('admin/', admin.site.urls),
     path('', include('department.urls')),
 ]
